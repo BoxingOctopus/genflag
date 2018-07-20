@@ -30,12 +30,15 @@ func main() {
 	segDelim := flag.String("d", "-", "If flag type is segmented, what should the delimiter be?")
 	segLen := flag.Int("l", 4, "If Flag Type is segmented, how long should each segment be?")
 	flagLen := flag.Int("n", 12, "Flag Suffix Length if type is 'single'")
+	numFlags := flag.Int("f", 1, "Number of Flags to generate")
 	flag.Parse()
 
-	if *flagType == "segmented" {
-		fmt.Println(*flagPrefix+RandomString(*segLen)+*segDelim+RandomString(*segLen)+*segDelim+RandomString(*segLen)+*segDelim+RandomString(*segLen))
-	} else {
-		fmt.Println(*flagPrefix+RandomString(*flagLen))
+	for i := 0; i < *numFlags; i++ {
+		if *flagType == "segmented" {
+			fmt.Println(*flagPrefix+RandomString(*segLen)+*segDelim+RandomString(*segLen)+*segDelim+RandomString(*segLen)+*segDelim+RandomString(*segLen))
+		} else {
+			fmt.Println(*flagPrefix+RandomString(*flagLen))
+		}
 	}
 	
 }
